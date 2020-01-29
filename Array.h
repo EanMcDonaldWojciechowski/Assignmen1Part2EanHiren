@@ -11,9 +11,6 @@
    Array manages an array of object pointers in the array objects_*/
 class Array : public Object {
     public:
-        Object** objects_; // owned. array of object pointers
-        size_t size_; // total size allocated for objects_
-        size_t count_; // current # of elements in vector
 
         /**
          * Object constructor - creates a empty Array                    
@@ -99,13 +96,6 @@ class Array : public Object {
          * @return  Object * at index
          */
         Object* get(size_t index) {}
-
-        /**
-         * hash_me_ - calculates the hash value for this
-         * @param   N/A
-         * @return  size_t representing a hash value for this
-         */
-        virtual size_t hash_me_() {}
 
         /**
          * hash - returns the hash value for this

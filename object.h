@@ -6,7 +6,6 @@
    Only contains two basic features, equals and hash. */
 class Object {
     public:
-        size_t hash_; // hash value of an object
 
         /**
          * Object constructor                       
