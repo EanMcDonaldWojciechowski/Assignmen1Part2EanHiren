@@ -35,13 +35,5 @@ class Object {
          * @param N/A      
          * @return size_t hash value
          */
-        size_t hash() {}
-
-        /**
-         * hash_me - computes the hash value of this   
-         *          
-         * @param N/A  
-         * @return size_t hash value
-         */
-        size_t hash_me() {}
+        virtual size_t hash() {}
 };
