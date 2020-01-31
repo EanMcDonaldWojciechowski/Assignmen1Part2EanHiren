@@ -6,7 +6,7 @@
 
 
 void FAIL() {   exit(1);    }
-void OK(const char* m) { print(m); }
+void OK(const char* m) { printf(m); std::cout << std::endl; }
 void t_true(bool p) { if (!p) FAIL(); }
 void t_false(bool p) { if (p) FAIL(); }
 
@@ -14,6 +14,7 @@ void t_false(bool p) { if (p) FAIL(); }
 void testGrow() {
   Array *arr = new Array();
   Object *o = new Object();
+  arr->add(o);
   t_true(arr->size_ == 1);
   arr->grow_();
   t_true(arr->size_ == 2);
@@ -28,6 +29,7 @@ void testGrow() {
 void testShrink() {
   Array *arr = new Array();
   Object *o = new Object();
+  arr->add(o);
   t_true(arr->size_ == 1);
   arr->grow_();
   t_true(arr->size_ == 2);
@@ -232,7 +234,7 @@ void notEqualsTest()  {
 void equalsNullTest()  {
   Array *arr = new Array();
   Object *a = nullptr;
-  arr->equals(a);
+  t_false(arr->equals(a));
   // dont know how to catch a assert false
   OK("passed equals nullptr test");
 }
@@ -328,7 +330,8 @@ void removeIdxTest()  {
   arr->add(a);
   arr->add(b);
   arr->add(0,c);
-  arr->remove(1);
+  size_t one = 1;
+  arr->remove(one);
   t_true(arr->index_of(c) == 0);
   t_false(arr->index_of(a) == 1);
   t_true(arr->index_of(b) == 1);
@@ -444,6 +447,24 @@ void lengthNot0Test()  {
 }
 
 int main() {
-
+  testGrow();
+  testShrink();
+  addTest();
+  addTestIdx();
+  clearWithValuesTest();
+  clearWithoutValuesTest();
+  equalsTest();
+  notEqualsTest();
+   equalsNullTest();
+  getTest();
+  hashTest();
+  idxOfObjTest();
+  idxOfObjNullptrTest();
+  removeIdxTest();
+  removeIdxObjTest();
+  removeIdxBadObjTest();
+  setGoodObjAndIdxTest();
+  lengthTest();
+  lengthNot0Test();
   return 0;
 }
