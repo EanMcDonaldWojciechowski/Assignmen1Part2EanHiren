@@ -3,6 +3,9 @@
 #include <iostream>
 #include "helper.h"
 #include "Array.h"
+#include "integer.h"
+#include "bool.h"
+#include "float.h"
 
 
 void FAIL() {   exit(1);    }
@@ -446,6 +449,102 @@ void lengthNot0Test()  {
   OK("passed length test");
 }
 
+void intArrayTest() {
+  Integer *i1 = new Integer(1);
+  Array *arr = new Array();
+  arr->add(i1);
+
+  Integer *i2 = new Integer(1);
+  Integer *i3 = new Integer(2);
+  Array *arr1 = new Array();
+  arr1->add(i2);
+  
+  t_true(arr1->equals(arr));
+  
+  t_true(arr->length() == 1);
+  t_true(arr->get(0)->equals(i1));
+
+  t_true(arr->index_of(i1) == 0);
+
+  arr1->add(0, i3);
+
+  t_true(arr1->length() == 2);
+
+  arr1->add_all(arr);
+
+  t_true(arr1->length() == 3);
+
+  arr->remove(i1);
+  t_true(arr->length() == 0);
+
+  arr1->clear();
+  t_true(arr1->length() == 0);
+}
+
+void floatArrayTest() {
+  Float *i1 = new Float(2.5);
+  Array *arr = new Array();
+  arr->add(i1);
+
+  Float *i2 = new Float(2.5);
+  Float *i3 = new Float(2.2);
+  Array *arr1 = new Array();
+  arr1->add(i2);
+  
+  t_true(arr1->equals(arr));
+  
+  t_true(arr->length() == 1);
+  t_true(arr->get(0)->equals(i1));
+
+  t_true(arr->index_of(i1) == 0);
+
+  arr1->add(0, i3);
+
+  t_true(arr1->length() == 2);
+
+  arr1->add_all(arr);
+
+  t_true(arr1->length() == 3);
+
+  arr->remove(i1);
+  t_true(arr->length() == 0);
+
+  arr1->clear();
+  t_true(arr1->length() == 0);
+}
+
+void boolArrayTest() {
+  Bool *i1 = new Bool(true);
+  Array *arr = new Array();
+  arr->add(i1);
+
+  Bool *i2 = new Bool(true);
+  Bool *i3 = new Bool(false);
+  Array *arr1 = new Array();
+  arr1->add(i2);
+  
+  t_true(arr1->equals(arr));
+  
+  t_true(arr->length() == 1);
+  t_true(arr->get(0)->equals(i1));
+
+  t_true(arr->index_of(i1) == 0);
+
+  arr1->add(0, i3);
+
+  t_true(arr1->length() == 2);
+
+  arr1->add_all(arr);
+
+  t_true(arr1->length() == 3);
+
+  arr->remove(i1);
+  t_true(arr->length() == 0);
+
+  arr1->clear();
+  t_true(arr1->length() == 0);
+}
+
 int main() {
   testGrow();
   testShrink();
@@ -455,7 +554,7 @@ int main() {
   clearWithoutValuesTest();
   equalsTest();
   notEqualsTest();
-   equalsNullTest();
+  equalsNullTest();
   getTest();
   hashTest();
   idxOfObjTest();
@@ -466,5 +565,8 @@ int main() {
   setGoodObjAndIdxTest();
   lengthTest();
   lengthNot0Test();
+  intArrayTest();
+  floatArrayTest();
+  boolArrayTest();
   return 0;
 }
