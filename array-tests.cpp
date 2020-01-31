@@ -266,19 +266,6 @@ void getTest()  {
 //   OK("passed get with idx OOB test");
 // }
 
-// hash_me
-void hash_meTest()  {
-  Array *arr = new Array();
-  Array *arr2 = new Array();
-  Object *a = new Object();
-  Object *b = new Object();
-  arr->add(a);
-  arr->add(b);
-  arr2->add(a);
-  arr2->add(b);
-  t_true(arr->hash_me() == arr2->hash_me());
-  OK("passed hash_me test");
-}
 
 // hash
 void hashTest()  {

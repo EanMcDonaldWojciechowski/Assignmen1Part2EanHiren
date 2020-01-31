@@ -130,7 +130,7 @@ class Array : public Object {
          * set - sets the Object * at index i to e
          * @param   size_t i is the index to be set
          * @param   Object e is the value to be set at i
-         * @return  Object* e
+         * @return  Object* at index i
          */
         Object* set(size_t i, Object* e) {}
 
